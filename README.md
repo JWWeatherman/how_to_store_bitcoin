@@ -19,7 +19,7 @@ and that you are comfortable.
 It is intended for securing amounts
 between $2,000 and $50,000.
 For amounts under $2,000 a hardware wallet
-and the insturctions included
+and the instructions included
 are sufficient.
 
 I love you enough to write this
@@ -112,7 +112,7 @@ and ensure you still have $50.
 
 At this point you can move over all of your funds
 to the 24 word seed by generating new
-addresses on the hardware wallet and transfering
+addresses on the hardware wallet and transferring
 your bitcoin to those addresses.
 
 Use random amount between $3,000 and $5,000.
