@@ -176,6 +176,12 @@ one of the sheets in a safety deposit box
 at least 5 miles from your home,
 and the third sheet with a trusted family member.
 
+Keep in mind that if someone gets one of your
+sheets they could work with a hacker to guess
+your missing words and if they get two of them
+they will be able to steal all of your bitcoin 
+so be sure to keep them in safe places.
+
 Good work. 
 This has been a terrifying process,
 but slowly you will realize the security
