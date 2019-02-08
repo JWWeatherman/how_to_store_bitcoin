@@ -129,13 +129,6 @@ Now you have bitcoin that can only be
 accessed using your 24 word seed
 stored on paper.
 
-Burn any papers that contain your seed word
-except the 3 that have parts of your seed
-that allow you to recreate the entire 24 
-words as long as you have 2 of the 3 sheets.
-
-This step should be terrifying.
-
 # Step 3 - Split your seed into 3 parts
 Your 24 word seed is essentially
 a really long password.
@@ -171,6 +164,13 @@ you should not proceed further.
 
 
 # Step 4 - Storing your 24 words
+Burn any papers that contain your seed word
+except the 3 that have parts of your seed
+that allow you to recreate the entire 24 
+words as long as you have 2 of the 3 sheets.
+
+This step should be terrifying.
+
 Store one of the sheets in your home safe,
 one of the sheets in a safety deposit box
 at least 5 miles from your home,
