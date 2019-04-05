@@ -1,4 +1,4 @@
-# Overview
+# Storing $2,000 to $50,000 in Bitcoin
 This guide is intended to provide
 ideas and suggestions in how to 
 secure your bitcoin investment.
