@@ -1,3 +1,30 @@
+# WARNING
+Do not use this guide!
+
+I just discovered that bip39,
+while implemented in every hardware 
+and software wallet I've tested
+outside of bitcoin core,
+is possibly insecure.
+
+My current understanding is that
+private keys generated using bip39
+may not contain enough entropy.
+In other words, they may be easy 
+to guess.
+
+I discovered this while considering
+the security issues inherent 
+in using software other than bitcoin core
+to generate private keys to store more than
+$50,000.
+
+I no longer recommend storing more than 
+$500 worth of bitcoin using private
+keys generated with anything other than
+bitcoin core so do not use this guide. 
+
+
 # Storing $2,000 to $50,000 in Bitcoin
 This guide is intended to provide
 ideas and suggestions in how to 
