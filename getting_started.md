@@ -111,7 +111,7 @@ https://tutorials.ubuntu.com/tutorial/tutorial-install-ubuntu-desktop#0
 You will want to install Ubuntu by making your SMALL external drive 
 bootable.
 
-Never connect the OFFLINE computure to any wifi network and disable the wifi
+Never connect the DISCONNECTED laptop to any wifi network and disable the wifi
 card in Ubuntu as soon as possible.
 
 Be sure that you first delete and reformat all existing partitions
