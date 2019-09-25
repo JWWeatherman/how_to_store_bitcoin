@@ -1,220 +1,185 @@
-# WARNING
-Do not use this guide!
+# Procedure
+This document provides instructions
+for creating and recovering a mulitsignature
+address.
 
-I just discovered that bip39,
-while implemented in every hardware 
-and software wallet I've tested
-outside of bitcoin core,
-is possibly insecure.
+## What you need:
+1. ONLINE laptop with Ubuntu, bitcoin core, this text file, and a printer.
+2. Offline laptop with Ubuntu and bitcoin core.
+3. External usb hard drive.
 
-My current understanding is that
-private keys generated using bip39
-may not contain enough entropy.
-In other words, they may be easy 
-to guess.
+## Prepare Laptops 
 
-I discovered this while considering
-the security issues inherent 
-in using software other than bitcoin core
-to generate private keys to store more than
-$50,000.
+###Install Ubuntu
+1. On both laptops using the usb drive.
+2. Turn off wifi and bluetooth on the "Offline" computer.
 
-I no longer recommend storing more than 
-$500 worth of bitcoin using private
-keys generated with anything other than
-bitcoin core so do not use this guide. 
+### Install QtQR and Bitcoin Core 
+QtQR is an application to create and read QR codes.
+It will be used to transfer data to and from 
+the Offline Computer.
 
+1. On the ONLINE Computer in the terminal window type:
+    sudo apt install qtqr
 
-# Storing $2,000 to $50,000 in Bitcoin
-This guide is intended to provide
-ideas and suggestions in how to 
-secure your bitcoin investment.
+TODO: -- Need to add the step to patch qtqr for saving images --
 
-Bitcoin is an new technology
-that is not finished yet.
-If you are trying to invest in
-bitcoin in 2018 you should understand
-that you are becoming a beta tester
-for a new form of money and that
-this involves both work and risk.
+2. Navigate to your desktop using a command like:
+    cd /home/bob/Desktop (this assumes your username is bob).
+3. Create a directory on your desktop named repack:
+    mkdir repack.
+4. Repackage all of your installed items using the command:
+    fakeroot -u dpkg-repack 'dpkg --get-selections | grep install | cut -f1'
+5. Copy the "repack" directory on your desktop.
+6. Download and install bitcoin core from:
+    https://bitcoincore.org/en/download/
+7. Be sure to turn off 
+6. On the ONLINE Computer open a terminal window and navigate to the "repack" directory using:
+    cd /home/bob/Desktop (this assumes "bob" is your username).
+7. Install all packages in the directory using the command:
+    sudo dpkg -i *.deb
 
-It would be wise to test this guide
-at least once using a smaller
-dollar amount to make sure it works
-and that you are comfortable.
+### Generate 7 private keys and prepare paper backups
+1. Print out the sheet locted at --TODO URL to the doc--
+2. Flip a coin. The side displayed will be used for the number 1.
+3. Place at least 50 pennies in a box and shake vigerously.
+4. Grab a handful of coins and Using the printed sheet write down a 1 or a 0 for each coin result.  For each underlined section write down 5 numbers. This will give you a total of 256 "bits" ink your private key.
+5. Using the python script on the OFFLINE machine convert the first binary number into a bitcoin WIF formatted private key.
+6. Paste each of the WIF formatted private keys into the OFFLINE.txt document into the section titled "Private Keys."
+6. Using the bitcoin console on the OFFLINE machine type "importprivkey <your_wif_private_key> firstkey" and hit Enter.
+7. Now type "getaddressbylabel firstkey" and hit Enter.
+8. To get your public double click the first address displayed, copy the address by double clicking it and typing ctrl-c. At the prompt type "getaddressinfo " and then right click and select Paste and then press Enter.
+9. In the information displayed under "pubkey" you will see your public key for your first private key. Double click the public key and use ctrl-c and ctrl-v to copy the public key into the "OFFLINE.txt"" document under section titled "Add Multisignature Address with Public Keys."
+10. Repeat steps 7 through 9 and use "secondkey" "thirdkey" and so forth. 
+11. Paste the command in the "Add Multisignature Address with Public Keys" into the bitcoin-qt console and click Enter.
+12. The console will return the multisignature address. Copy and paste it into the section titled "Returned Multisignature Address" into the "OFFLINE.txt" file.
+13. Open QTQR and paste in the command under the "OFFLINE Add Multisignature Address with Public Keys" section.
+14. On the ONLINE machine open QTQR, click the Decode button, and select your webcam. Then paint your ONLINE machine webcam at the QR code displayed on the OFFLINE machine and then click Edit on your OFFLINE machine.
+15. Copy and paste into the "ONLINE_Procedure.txt" file in the "Add Multisignature Command with Public Keys" section.
+16. Repeat steps 14 and 15 to copy over the "Returned Multisignature Address" from the OFFLINE.txt file on the OFFLINE machine to the ONLINE_Procedure.txt file on the ONLINE machine.
+17. Print 7 copies of this document (the ONLINE_Procedure.txt).
+18. Copy and Paste the "Returned Multisignature Address" into QTQR and click the Save QRCode button and save it to your desktop. Print 7 copies of this QR code and write "Returned Multisignature Address" at the top.
+19. Repeat step 18 to print 7 copies of the QR Code for "Add Multisignature Command with Public Keys" section and write "Add Multisignature Command with Public Keys" on the top of each paper.
+20. Create 7 stapled packets that contain this procudure (ONLINE_Procedure.txt), the QR code that contains the "Add Multisignature Command with Public Keys" and the QR Code that contains the "Returned Multisignature."
+21. Using a blue or black pen write down each of your private keys on each of your packets in the section named "Private Keys." If you have any doubt that your private keys have remained secret and known only to you restart this procedure at step 1. 
 
-It is intended for securing amounts
-between $2,000 and $50,000.
-For amounts under $2,000 a hardware wallet
-and the instructions included
-are sufficient.
+--------- current location ---------------
 
-I love you enough to write this
-and make it free,
-but I don't love you enough
-to give you your money back
-if there is an error or you 
-make a mistake 
-so use at your own risk
-and be careful.
-
-# Step 1 - Generate a 24 word seed
-The first step in securing your bitcoin
-is to generate a bitcoin seed.
-The bitcoin seed is essentially
-a very long password
-(24 words)
-that gives you,
-or anyone else that has it,
-control over your bitcoin.
-
-Generating this password is tricky
-because you need it to be
-as unexpected as possible
-and this is difficult.
-
-The best way to do it right now
-is to use a hardware wallet
-such as a Trezor or Ledger
-or Cold Card.
-This is because these single purpose 
-computers or more trustworthy 
-than your laptop or desktop
-because they are less likely to have
-a virus or other malicious code.
-
-Unfortunately many of these "hardware wallets"
-require the use of a laptop or desktop
-to function and will display the seed words
-on the laptop or desktop.
-If you have a hardware wallet that can 
-generate and display a 24 word seed
-without being connected to another computer this step 
-is easy - do that and then write down all 24 words on paper.
-
-If your hardware wallet requires a computer
-you should create a backup and then 
-format and reinstall your operating system.
-Then be sure to never connect it to any network
-(including your wifi network at home),
-generate and write down your 24 word seed,
-and then format and reinstall your OS again
-to make sure that the seed 
-is no longer stored on your laptop.
-
-This might seem like excessive work,
-but it is doable for most people 
-within a couple hours and buys you 
-some reasonable security as well as some 
-extra margin of error in making mistakes
-at some of the other steps.
-
-Make another copy of your 24 word seed
-by copying the paper you first used - 
-do not make this copy from the hardware
-wallet.
-
-Hide your first copy in a safe place.
-We will be working with that second copy
-for the rest of the process.
-
-# Step 2 - send your bitcoin "to your seed words"
-Now that you have a 24 word seed that
-has been generated securely and has never been 
-on any computer connected to the internet
-you are ready to move your bitcoin to that seed.
-
-To do that use your hardware wallet to generate a public key
-and send over $50 worth of bitcoin.
-
-After the bitcoin balance shows $50 on your hardware wallet
-erase the hardware wallet.
-If you did not write down your seed correctly 
-you just lost $50 forever. 
-No one can ever recover it for you.
-
-Now, using your 24 word seed,
-recover your bitcoin wallet 
-and ensure you still have $50.
-
-At this point you can move over all of your funds
-to the 24 word seed by generating new
-addresses on the hardware wallet and transferring
-your bitcoin to those addresses.
-
-Use random amount between $3,000 and $5,000.
-This will improve your privacy a little
-and only cost you a tiny amount in bitcoin fees
-and hassle.
-
-Once this is complete and you are satisfied
-that all of your bitcoin has been
-sent to your 24 word seed
-you can erase your hardware wallet.
-
-Now you have bitcoin that can only be
-accessed using your 24 word seed
-stored on paper.
-
-# Step 3 - Split your seed into 3 parts
-Your 24 word seed is essentially
-a really long password.
-It needs to be very long because
-unlike your email password
-hackers can guess the correct answer
-millions of times per second.
-
-To make it less likely that you will lose
-your seed we are going to split 
-it into 3 parts that will allow you
-to recover your bitcoin as long as you
-have at least 2 of the parts.
-
-We will also make it so that it
-would require a lot of expense
-and expertise to recreate your seed,
-if it is even possible,
-with only a single part.
-
-To do this copy your 24 words
-to three different sheets of paper
-to match this diagram.
-
-https://user-images.githubusercontent.com/32912678/42778987-f2c65fee-890c-11e8-82f6-3aeab7304f14.png
+### Test Private Keys
+1. On the ONLINE machine use the "importaddress" command with the Mulitisignature Address from the "ONLINE_Procedure.txt."
+2. Send a very small amount of bitcoin (less than $5) to this address. You will use this amount to send test transactions of bitcoin from your 7 private keys, but this amount will be permanently lost to reduce the privacy leak involved in spending from your multisignature address.
+3. Wait until bitcoin-qt, on the overview screen, shows that the deposit is confirmed.
+4. On the OFFLINE machine delete the BitcoinData directory and empty your trash. This will delete your bitcoin private keys.
+5. Copy the BitcoinData directory from the OFFLINE machine to the ONLINE machine. 
+6. Select 3 random packets and write down "test 1" in the upper right hand corner.
+7. On the OFFLINE machine use the "importprivkey" command to import all three private keys.
+8. Use the command in the Add Multisignature Command and Public Keys to add the multisignature back to the OFFLINE machine.
+9. On the ONLINE machine use the "listunspent" command to grab the "txid," "scriptPubKey," and "vout" and paste this info into a new text document named "testtransaction.txt." 
+10. On the ONLINE machine use the command "createwallet donation to hodlers" to create a new wallet.
+11. In the upper right hand corner of bitcoin-qt select the "donation to hodlers" wallet and then use the "getnewaddress" command. 
+12. Using the "createrawtransaction inputs='''[ { "txid": "'$utxo_txid'", "vout": '$utxo_vout' } ]''' outputs='''{ "'$recipient'": 1.299}''')" command, replace the missing items with the info gathered into the "testtransaction.txt" file. Be sure to make the amount a little less than the amount in the utxo to allow for miner fees. 
+13. Using QtQR copy the returned hex number (this is the unsigned transaction) to the OFFLINE machine.
+14. On the ONLINE machine, using the signrawtransactionwithwallet command,  sign the transaction and then copy the returned hex number (the signed transaction) to the ONLINE machine using QtQR. 
 
 
-### Warning: 
-If you are not certain that you
-can recover all 24 words in the
-event that one of the sheets is lost
-you should not proceed further.
+## Create and backup the Multisig Address
+1. On the Offline Laptop create a text file on the desktop named “addresses and redeem script.txt”
+2. Generate 7 addresses and copy them into the “addresses and redeem script” text file.
+3. Use the “addmultisigaddress” command to create a multisig address. 
+4. Copy the 7 addresses, multisig address and the redeem script to the ONLINE laptop using QtQR.
+5. On the ONLINE laptop copy and paste the 7 addresses, multisig address and the redeem script into this document and then print 7 copies of it.
+6. Print out the QR code for the G addresse, multisig address and the redepmtion script 7 times using QtQR. Using a pen label each QR code.
+7. Staple together 7 packets that include the paper copies of this procedure and the QR codes.
+6. On the Offline computer find the corresponding private keys from the “dumpprivatekey” command and using a pen add each to the above section in each packet. Be sure and complete the section that specifies the address the corresponds to this private key.l
+7. Erase the wallet an the Offline Laptop.
+9. On the ONLINE computer Use the “” command to add the multisignature address as a watch only address.
+10. Send a small amount of bitcoin to this multisignature address and verify the the funds arrive.
+
+## Restore and Test the Multisig Address
+
+1. On 3 of the paper copies of the document place a “1” in the upper right hand corner (the “1” stands for 1st test).
+2. On the Offline machine use the “importprivkey” to import the 3 keys with a “T” into bitcoin core. You will need to take the time to type these in carefully.
+3. On the ONLINE machine use the "listunspent" and then transfer the "txid," "scriptPubKey," and "vout" to the Offline computer using the QtQR.3. On the ONLINE machine use the "listunspent" and then transfer the "txid," "scriptPubKey," and "vout" to the Offline computer using the QtQR.3. On the ONLINE machine use the "listunspent" and then transfer the "txid," "scriptPubKey," and "vout" to the Offline computer using the QtQR.
 
 
-# Step 4 - Storing your 24 words
-Burn any papers that contain your seed word
-except the 3 that have parts of your seed
-that allow you to recreate the entire 24 
-words as long as you have 2 of the 3 sheets.
 
-This step should be terrifying.
+3. On the Offline machine use the “createmultisig” command and the addresses on one of the sheets of paper to restore the multisig address.
+4. On the ONLINE machine create a new walled named “donation to hodlers” and create a new address.
+5. On the Offline machine  
 
-Store one of the sheets in your home safe,
-one of the sheets in a safety deposit box
-at least 5 miles from your home,
-and the third sheet with a trusted family member.
 
-Keep in mind that if someone gets one of your
-sheets they could work with a hacker to guess
-your missing words and if they get two of them
-they will be able to steal all of your bitcoin 
-so be sure to keep them in safe places.
 
-Good work. 
-This has been a terrifying process,
-but slowly you will realize the security
-and satisfaction of knowing
-no one can easily steal your bitcoin.
+## Add Multisignature Command with Public Keys
+
+ addmultisigaddress 3
+ "[\"first_public_key_here\",\"second_public_key_here\",\"third_public_key_here\",\"fourth_public_key_here\",\"fifth_public_key_here\",\"sixth_public_key_here\",\"seventh_public_key_here\"]"
+
+## Returned Multisignature Address
+
+ Returned_multisig_address_here
+
+## Private Key
+
+This is the private key that corresponds 
+to the bitcoin __________ public key above.
+
+The private key is:
 
 
 
 
+1.
+
+
+2.
+
+
+3.
+
+
+4.
+
+
+5.
+
+
+6.
+
+
+7.
+
+
+8.
+
+
+9.
+
+
+10.
+
+
+11.
+
+
+12.
+
+
+13.
+
+
+
+
+
+
+It is written using the NATO phonetic alphabet. 
+Numbers are written out and letters 
+are represented by words where the first letter is the letter of the private key.
+
+Capital letters are indicated by preceding the word with the "#" symbol.
+
+## Repemtion Script
+This is the redemption script. 
+This can be be recreated by using the bitcoin addresses in the correct order, 
+but this script provides rudundancy:
+
+Paste_the_redeem_script_here

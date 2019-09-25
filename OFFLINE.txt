@@ -1,0 +1,19 @@
+
+# Add Multisignature Command with Public Keys
+
+addmultisigaddress 3
+"[\"first_public_key_here\",\"second_public_key_here\",\"third_public_key_here\",\"fourth_public_key_here\",\"fifth_public_key_here\",\"sixth_public_key_here\",\"seventh_public_key_here\"]"
+
+# Returned Multisignature Address
+
+Returned_multisig_address_here
+
+# Private Keys
+
+paste_private_key_one_here
+paste_private_key_two_here
+paste_private_key_three_here
+paste_private_key_four_here
+paste_private_key_five_here
+paste_private_key_six_here
+paste_private_key_seven_here
