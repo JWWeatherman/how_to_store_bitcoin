@@ -57,7 +57,7 @@ What device are you using to read this?
 
 I'm just getting started
 
-I am reading this on my OFFLINE laptop
+I am reading this on my DISCONNECTED laptop
 
 I am reading this on my ONLINE - DANGER laptop
 
@@ -99,13 +99,6 @@ Capture the address and the redeem script.
 Display the multisig address on the disconnected laptop and copy it to the online laptop using a qr code.
 
 Repeat for the redeem script.
-
-# Print the guide
-## online laptop
-This will contain the instructions,
-the redeem scirpt, 
-the addmultisigaddress command used,
-and space to include the private key.
 
 # Step X: Write Down Your Private Keys
 
