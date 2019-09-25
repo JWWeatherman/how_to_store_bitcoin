@@ -57,7 +57,7 @@ What device are you using to read this?
 
 I'm just getting started
 
-I am reading this on my OFFLINE laptop
+I am reading this on my DISCONNECTED laptop
 
 I am reading this on my ONLINE - DANGER laptop
 
@@ -87,7 +87,7 @@ Once you have these items available click Next to continue.
 
 # Step X: Label and Tape Your Laptops and Drives
 
-Using a permanent marker write the word "OFFLINE" 
+Using a permanent marker write the word "DISCONNECTED" 
 on both the outside and the inside of one laptop
 and the words "DANGER - ONLINE" on the outside
 and inside of the other laptop.
