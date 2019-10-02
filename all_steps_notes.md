@@ -28,15 +28,23 @@
     $ sudo apt-get install dpkg-repack fakeroot
     $ mkdir ~/dpkg-repack; cd ~/dpkg-repack
     $ fakeroot -u dpkg-repack `dpkg --get-selections | grep install | cut -f1`
-- move the package and the bitcoin installer and the .bitcoin directory into a folder on the desktop named "to_disconnected"
-- instruct user to copy to_disconnected to the LARGE external hard drive and then to the desktop of "disconnected"
+- move the package and the bitcoin installer and the .bitcoin directory into a folder on the desktop named "toDisconnected"
+- instruct user to copy toDisconnected to the LARGE external hard drive and then to the desktop of "disconnected"
+
+from online latop to toDisconnected folder
+1. FlaskApp directory (includes bitcoin core installation)
+2. .bitcoin directory
+3. dpkg-repack directory
 
 - on disconnected laptop, after the user has copied the folder from the LARGE drive to the desktop, open a terminal and type
-cd ~/Desktop/dpkg-repack/
+cd ~/Desktop/toDisconnected/dpkg-repack/
 sudo dpkg -i *.deb
 
+cp -a ~/Desktop/toDisconnected/.bitcoin/. /~
+cp -a ~/Desktop/toDisconnected/flaskapp/. /~
 
-    sudo dpkg -i *.deb
+
+
 - now copy over bitcoin core application to home.
 - copy the .bitcoin directory. This will take some significant time so let's see if we can show a status.
     and then start bitcoind (might need to start/stop bitcoind before copying over the directory if this causes errors).
