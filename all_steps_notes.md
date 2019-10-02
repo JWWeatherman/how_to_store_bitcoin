@@ -31,7 +31,11 @@
 - move the package and the bitcoin installer and the .bitcoin directory into a folder on the desktop named "to_disconnected"
 - instruct user to copy to_disconnected to the LARGE external hard drive and then to the desktop of "disconnected"
 
-- on disconnected laptop install the package using exactly this command:
+- on disconnected laptop, after the user has copied the folder from the LARGE drive to the desktop, open a terminal and type
+cd ~/Desktop/dpkg-repack/
+sudo dpkg -i *.deb
+
+
     sudo dpkg -i *.deb
 - now copy over bitcoin core application to home.
 - copy the .bitcoin directory. This will take some significant time so let's see if we can show a status.
